@@ -1,0 +1,8 @@
+site_name: SUPER DUPER OPBD DOCUMENTATION
+site_url: https://example.com/
+nav:
+    - Info: info.md
+    - DB creation: index.md
+    - Queries: query.md
+    - PHP: php.md
+theme: windmill-dark
