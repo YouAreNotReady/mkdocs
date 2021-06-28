@@ -92,82 +92,85 @@ $dbpass = "1234";
 $host = "localhost";
 $dbname="school";
 
-// $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-// $stmt = $pdo->query("select * from labor_contract, teacher where teacher_id = 2 and teacher = 2");
-// echo "<table>";
-// echo "<tr>";
-// echo "<td>" . "labor_contract_id" . "</td>";
-// echo "<td>" . "hire" . "</td>";
-// echo "<td>" . "teacher" . "</td>";
-// echo "<td>" . "teacher_id" . "</td>";
-// echo "<td>" . "cabinet" . "</td>";
-// echo "</tr>";
-// while ($row = $stmt->fetch())
-// {
-// echo "<tr>";
-// echo "<td>" . $row["labor_contract_id"] . "</td>";
-// echo "<td>" . $row["hire"] . "</td>";
-// echo "<td>" . $row["teacher"] . "</td>";
-// echo "<td>" . $row["teacher_id"] . "</td>";
-// echo "<td>" . $row["cabinet"] . "</td>";
-// echo "</tr>";
-// }
-// echo "</table>";
+$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+$stmt = $pdo->query("select * from labor_contract, teacher where teacher_id = 2 and teacher = 2");
+echo "<table>";
+echo "<tr>";
+echo "<td>" . "labor_contract_id" . "</td>";
+echo "<td>" . "hire" . "</td>";
+echo "<td>" . "teacher" . "</td>";
+echo "<td>" . "teacher_id" . "</td>";
+echo "<td>" . "cabinet" . "</td>";
+echo "</tr>";
+while ($row = $stmt->fetch())
+{
+echo "<tr>";
+echo "<td>" . $row["labor_contract_id"] . "</td>";
+echo "<td>" . $row["hire"] . "</td>";
+echo "<td>" . $row["teacher"] . "</td>";
+echo "<td>" . $row["teacher_id"] . "</td>";
+echo "<td>" . $row["cabinet"] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+echo "<br>";
 
+$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+$stmt = $pdo->query("select * from labor_contract where (select extract(month from hire) = 10) and teacher = 3;");
+echo "<table>";
+echo "<tr>";
+echo "<td>" . "labor_contract_id" . "</td>";
+echo "<td>" . "hire" . "</td>";
+echo "<td>" . "teacher" . "</td>";
+echo "</tr>";
+while ($row = $stmt->fetch())
+{
+echo "<tr>";
+echo "<td>" . $row["labor_contract_id"] . "</td>";
+echo "<td>" . $row["hire"] . "</td>";
+echo "<td>" . $row["teacher"] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+echo "<br>";
 
-// $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-// $stmt = $pdo->query("select * from labor_contract where (select extract(month from hire) = 10) and teacher = 3;");
-// echo "<table>";
-// echo "<tr>";
-// echo "<td>" . "labor_contract_id" . "</td>";
-// echo "<td>" . "hire" . "</td>";
-// echo "<td>" . "teacher" . "</td>";
-// echo "</tr>";
-// while ($row = $stmt->fetch())
-// {
-// echo "<tr>";
-// echo "<td>" . $row["labor_contract_id"] . "</td>";
-// echo "<td>" . $row["hire"] . "</td>";
-// echo "<td>" . $row["teacher"] . "</td>";
-// echo "</tr>";
-// }
-// echo "</table>";
+$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+$stmt = $pdo->query("select concat(pupil_id, ' - ', name) as id_name from pupil;");
+echo "<table>";
+echo "<tr>";
+echo "<td>" . "id_name" . "</td>";
+echo "</tr>";
+while ($row = $stmt->fetch())
+{
+echo "<tr>";
+echo "<td>" . $row["id_name"] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+echo "<br>";
 
-// $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-// $stmt = $pdo->query("select concat(pupil_id, ' - ', name) as id_name from pupil;");
-// echo "<table>";
-// echo "<tr>";
-// echo "<td>" . "id_name" . "</td>";
-// echo "</tr>";
-// while ($row = $stmt->fetch())
-// {
-// echo "<tr>";
-// echo "<td>" . $row["id_name"] . "</td>";
-// echo "</tr>";
-// }
-// echo "</table>";
-
-// $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-// $stmt = $pdo->query("select * from pupil where pupil_id in (select pupil_id from journal where pupil_id = 1);");
-// echo "<table>";
-// echo "<tr>";
-// echo "<td>" . "pupil_id" . "</td>";
-// echo "<td>" . "class_id" . "</td>";
-// echo "<td>" . "name" . "</td>";
-// echo "<td>" . "gender" . "</td>";
-// echo "<td>" . "average_score" . "</td>";
-// echo "</tr>";
-// while ($row = $stmt->fetch())
-// {
-// echo "<tr>";
-// echo "<td>" . $row["pupil_id"] . "</td>";
-// echo "<td>" . $row["class_id"] . "</td>";
-// echo "<td>" . $row["name"] . "</td>";
-// echo "<td>" . $row["gender"] . "</td>";
-// echo "<td>" . $row["average_score"] . "</td>";
-// echo "</tr>";
-// }
-// echo "</table>";
+$pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
+$stmt = $pdo->query("select * from pupil where pupil_id in (select pupil_id from journal where pupil_id = 1);");
+echo "<table>";
+echo "<tr>";
+echo "<td>" . "pupil_id" . "</td>";
+echo "<td>" . "class_id" . "</td>";
+echo "<td>" . "name" . "</td>";
+echo "<td>" . "gender" . "</td>";
+echo "<td>" . "average_score" . "</td>";
+echo "</tr>";
+while ($row = $stmt->fetch())
+{
+echo "<tr>";
+echo "<td>" . $row["pupil_id"] . "</td>";
+echo "<td>" . $row["class_id"] . "</td>";
+echo "<td>" . $row["name"] . "</td>";
+echo "<td>" . $row["gender"] . "</td>";
+echo "<td>" . $row["average_score"] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
+echo "<br>";
 
 $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
 $stmt = $pdo->query("select * from journal where pupil_id in (select pupil_id from pupil where class_id in (select class_id from class where class_id = 1));");
@@ -188,6 +191,7 @@ echo "<td>" . $row["pupil_id"] . "</td>";
 echo "</tr>";
 }
 echo "</table>";
+echo "<br>";
 
 ?>
 
